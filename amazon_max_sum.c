@@ -1,3 +1,5 @@
+//http://www.careercup.com/question?id=13501661
+
 #include<stdio.h>
 
 int max1=0,max2=0,max3=0,maxwa=0 ;
