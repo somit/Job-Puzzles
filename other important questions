@@ -35,8 +35,27 @@ Motorola 68K processors are big endians. PowerPC (by Motorola) and SPARK (by Sun
 Does endianness effects file formats?
 File formats which have 1 byte as a basic unit are independent of endianness e..g., ASCII files . Other file formats use some fixed endianness forrmat e.g, JPEG files are stored in big endian format.
 
+Compile-time Tests:
+--------------------
+The sys/param.h header normally defines the symbols __BYTE_ORDER, __BIG_ENDIAN, __LITTLE_ENDIAN, and __PDP_ENDIAN. You can test endianness by doing something like:
+
+   #include <sys/param.h>
+
+   #ifdef __BYTE_ORDER
+   # if __BYTE_ORDER == __LITTLE_ENDIAN
+   #  define I_AM_LITTLE_ENDIAN
+   # else
+   #  if __BYTE_ORDER == __BIG_ENDIAN
+   #   define I_AM_BIG_ENDIAN
+   #  else
+       Error: unknown byte order!
+   #  endif
+   # endif
+   #endif /* __BYTE_ORDER */
 
 
+RUntime Test:
+---------------
 
 int main()
 {
@@ -50,3 +69,6 @@ int main()
    return 0;
  
 }
+
+
+-------------------------------------------------------------------------------------------------------------------------
