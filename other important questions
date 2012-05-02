@@ -19,3 +19,34 @@ int max_sum(int *vector, int len)
 }
 
 ------------------------------------------------------------------------------------------
+
+2) Big Endian Little Endian
+http://www.geeksforgeeks.org/archives/801
+Normal storage: big endian machines, first byte of binary representation of the multibyte data-type is stored last.
+
+What are bi-endians?
+Bi-endian processors can run in both modes little and big endian.
+
+What are the examples of little, big endian and bi-endian machines ?
+Intel based processors are little endians. ARM processors were little endians. Current generation ARM processors are bi-endian.
+
+Motorola 68K processors are big endians. PowerPC (by Motorola) and SPARK (by Sun) processors were big endian. Current version of these processors are bi-endians.
+
+Does endianness effects file formats?
+File formats which have 1 byte as a basic unit are independent of endianness e..g., ASCII files . Other file formats use some fixed endianness forrmat e.g, JPEG files are stored in big endian format.
+
+
+
+
+int main()
+{
+   unsigned int i = 1;
+   char *c = (char*)&i;
+   if (*c)
+       printf("Little endian");
+   else
+       printf("Big endian");
+   getchar();
+   return 0;
+ 
+}
