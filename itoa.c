@@ -1,4 +1,7 @@
+//http://www.careercup.com/question?id=2794
+
 #include <stdio.h>
+//stdlib for malloc
 #include <stdlib.h>
 
 char* itoa(int x) {
