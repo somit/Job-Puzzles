@@ -1,4 +1,4 @@
-Array Sum Challenge
+1) Array Sum Challenge
 ---------------------------------
 In this challenge, given an array of integers, the goal is to efficiently find the subarray that has the greatest value when all of its elements are summed together. Note that because some elements of the array may be negative, the problem is not solved by simply picking the start and end elements of the array to be the subarrray, and summing the entire array. 
 
@@ -18,4 +18,4 @@ int max_sum(int *vector, int len)
     return best;
 }
 
-
+------------------------------------------------------------------------------------------
