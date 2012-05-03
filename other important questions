@@ -1,0 +1,85 @@
+1) Array Sum Challenge
+---------------------------------
+In this challenge, given an array of integers, the goal is to efficiently find the subarray that has the greatest value when all of its elements are summed together. Note that because some elements of the array may be negative, the problem is not solved by simply picking the start and end elements of the array to be the subarrray, and summing the entire array. 
+
+int max_sum(int *vector, int len)
+{
+    int best = 0, current = 0;
+    int i = 0;
+    for(i = 0; i < len; ++i)
+    {
+        current += *(vector + i);
+        if(current < 0)
+        {
+            current = 0;
+        }
+        best = best > current ? best : current;
+    }
+    return best;
+}
+
+------------------------------------------------------------------------------------------
+
+2) Big Endian Little Endian
+http://www.geeksforgeeks.org/archives/801
+Normal storage: big endian machines, first byte of binary representation of the multibyte data-type is stored last.
+
+What are bi-endians?
+Bi-endian processors can run in both modes little and big endian.
+
+What are the examples of little, big endian and bi-endian machines ?
+Intel based processors are little endians. ARM processors were little endians. Current generation ARM processors are bi-endian.
+
+Motorola 68K processors are big endians. PowerPC (by Motorola) and SPARK (by Sun) processors were big endian. Current version of these processors are bi-endians.
+
+Does endianness effects file formats?
+File formats which have 1 byte as a basic unit are independent of endianness e..g., ASCII files . Other file formats use some fixed endianness forrmat e.g, JPEG files are stored in big endian format.
+
+Compile-time Tests:
+--------------------
+The sys/param.h header normally defines the symbols __BYTE_ORDER, __BIG_ENDIAN, __LITTLE_ENDIAN, and __PDP_ENDIAN. You can test endianness by doing something like:
+
+   #include <sys/param.h>
+
+   #ifdef __BYTE_ORDER
+   # if __BYTE_ORDER == __LITTLE_ENDIAN
+   #  define I_AM_LITTLE_ENDIAN
+   # else
+   #  if __BYTE_ORDER == __BIG_ENDIAN
+   #   define I_AM_BIG_ENDIAN
+   #  else
+       Error: unknown byte order!
+   #  endif
+   # endif
+   #endif /* __BYTE_ORDER */
+
+
+RUntime Test:
+---------------
+
+int main()
+{
+   unsigned int i = 1;
+   char *c = (char*)&i;
+   if (*c)
+       printf("Little endian");
+   else
+       printf("Big endian");
+   getchar();
+   return 0;
+ 
+}
+
+
+------------------------------------------------------------------------------------------------------------------------
+
+3) Extern
+
+1. Declaration can be done any number of times but definition only once.
+2. “extern” keyword is used to extend the visibility of variables/functions().
+3. Since functions are visible through out the program by default. The use of extern is not needed in function declaration/definition. Its use is redundant.
+4. When extern is used with a variable, it’s only declared not defined.
+5. As an exception, when an extern variable is declared with initialization, it is taken as definition of the variable as well.
+
+-----------------------------------------------------------------------------------------------------------------------
+
