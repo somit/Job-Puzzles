@@ -22,14 +22,14 @@ void permute(char *a, int i, int n)
    else
    {
         for (j = i; j <= n; j++)
-       {  printf("%s\n", a);
-         printf("i=%d , j=%d " , i ,j);
-         printf("\nBefore swap1: %c,%c,passed=%d \n" , *(a+i) ,*(a+j),i+1);
+       {  //printf("%s\n", a);
+        // printf("i=%d , j=%d " , i ,j);
+        // printf("\nBefore swap1: %c,%c,passed=%d \n" , *(a+i) ,*(a+j),i+1);
          swap((a+i), (a+j));
           permute(a, i+1, n);
-           printf("Before swap2: %c,%c \n," , *(a+i) ,*(a+j));
+        //   printf("Before swap2: %c,%c \n," , *(a+i) ,*(a+j));
           swap((a+i), (a+j)); //backtrack
-          printf("\n %c , %c end\n" , *(a+i) ,*(a+j));
+          //printf("\n %c , %c end\n" , *(a+i) ,*(a+j));
           
        }
    }
