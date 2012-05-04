@@ -83,3 +83,13 @@ int main()
 
 -----------------------------------------------------------------------------------------------------------------------
 
+4) Output of this:
+int main( )
+{
+char ch[16]="the world is";
+ch[13]='b';
+printf("%s",ch);
+}
+
+output: the world is
+Thought:-> ch[12] is still '\0' where string will end so it only prints till then.
