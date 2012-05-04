@@ -152,3 +152,38 @@ Output:
 
 210
 --------------------------------------------------------------------------------------------------------------------
+
+7)Facts:
+a)In C/C++, initialization of a multidimensional arrays can have left most dimension as optional. Except the left most dimension, all other dimensions must be specified.
+b)In C++(in C both fails), pre-increment (or pre-decrement) can be used as l-value, but post-increment (or post-decrement) can not be used as l-value.
+++a = 20; // works
+a++=20; //fails
+c)In C, it is never safe to depend on the order of evaluation of side effects. For example, a function call like below may very well behave differently from one compiler to another:
+
+void func (int, int);
+ 
+int i = 2;
+func (i++, i++);
+There is no guarantee (in either the C or the C++ standard language definitions) that the increments will be evaluated in any particular order. Either increment might happen first. func might get the arguments `2, 3′, or it might get `3, 2′, or even `2, 2′.
+
+Source: http://gcc.gnu.org/onlinedocs/gcc/Non_002dbugs.html
+d)In C language, sizeof( ) is an operator. Though it looks like a function, it is an unary operator.
+e)In ISO C, you can define main either to take no arguments, or to take two arguments that represent the command line arguments to the program, like this:
+
+int main (int argc, char *argv[])
+Other platform-dependent formats are also allowed by the C and C++ standards; for example, Unix (though not POSIX.1) and Microsoft Visual C++ have a third argument giving the program’s environment, otherwise accessible through getenv in stdlib.h:
+
+char * pPath;
+pPath = getenv ("PATH");
+if (pPath!=NULL)
+printf ("The current path is: %s",pPath);
+
+f)int arr[2]={6,0};
+ 
+arr => first place , arr+1 = second place(4 adds up);
+&arr= starting of whole array ie first plac so arr==&arr,
+now &arr+1 -> &a + 8 postions forward( as arr has size=2 so 4*2)
+
+char *str= "somit";strlen =5 ,sizeof(str)= 4(pointer size)
+char str[]="somit; srtlen=5 , sizeof(str)=6 ( 5 places + 1 '\0')
+
