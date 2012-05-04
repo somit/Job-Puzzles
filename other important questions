@@ -187,3 +187,13 @@ now &arr+1 -> &a + 8 postions forward( as arr has size=2 so 4*2)
 char *str= "somit";strlen =5 ,sizeof(str)= 4(pointer size)
 char str[]="somit; srtlen=5 , sizeof(str)=6 ( 5 places + 1 '\0')
 
+Pointers for functions: -> int (*foo)(int);  here foo is function
+
+void (*p_function)(int) = NULL;
+p_function = &function;
+p_function(blaaaaaaaa);
+
+------------------------------------------------------------------------------------------------------
+
+
+
