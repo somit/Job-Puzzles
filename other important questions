@@ -83,3 +83,117 @@ int main()
 
 -----------------------------------------------------------------------------------------------------------------------
 
+4) Output of this:
+int main( )
+{
+char ch[16]="the world is";
+ch[13]='b';
+printf("%s",ch);
+}
+
+output: the world is
+Thought:-> ch[12] is still '\0' where string will end so it only prints till then.
+
+-----------------------------------------------------------------------------------------------------------------
+
+5)/* printf example */
+#include <stdio.h>
+
+int main()
+{
+   printf ("Characters: %c %c \n", 'a', 65);
+   printf ("Decimals: %d %ld\n", 1977, 650000L);
+   printf ("Preceding with blanks: %10d \n", 1977);
+   printf ("Preceding with zeros: %010d \n", 1977);
+   printf ("Some different radixes: %d %x %o %#x %#o \n", 100, 100, 100, 100, 100);
+   printf ("floats: %4.2f %+.0e %E \n", 3.1416, 3.1416, 3.1416);
+   printf ("Width trick: %*d \n", 5, 10);
+   printf ("%s \n", "A string");
+   return 0;
+}
+
+
+And here is the output:
+
+Characters: a A
+Decimals: 1977 650000
+Preceding with blanks:       1977
+Preceding with zeros: 0000001977
+Some different radixes: 100 64 144 0x64 0144
+floats: 3.14 +3e+000 3.141600E+000
+Width trick:    10
+A string
+
+--------------------------------------------------------------------------------------------
+
+6) Casting
+int main()
+{
+    char arr[5][7][6];
+    char (*p)[5][7][6] = &arr;
+ 
+    /* Hint: &arr - is of type pointer to an array of
+       5 two dimensional arrays of size [7][6] */
+ 
+    printf("%d\n", (&arr + 1) - &arr);
+    printf("%d\n", (char *)(&arr + 1) - (char *)&arr);
+    printf("%d\n", (unsigned)(arr + 1) - (unsigned)arr);
+    printf("%d\n", (unsigned)(p + 1) - (unsigned)p);
+ 
+    return 0;
+}
+Output:
+
+1
+
+210
+
+42
+
+210
+--------------------------------------------------------------------------------------------------------------------
+
+7)Facts:
+a)In C/C++, initialization of a multidimensional arrays can have left most dimension as optional. Except the left most dimension, all other dimensions must be specified.
+b)In C++(in C both fails), pre-increment (or pre-decrement) can be used as l-value, but post-increment (or post-decrement) can not be used as l-value.
+++a = 20; // works
+a++=20; //fails
+c)In C, it is never safe to depend on the order of evaluation of side effects. For example, a function call like below may very well behave differently from one compiler to another:
+
+void func (int, int);
+ 
+int i = 2;
+func (i++, i++);
+There is no guarantee (in either the C or the C++ standard language definitions) that the increments will be evaluated in any particular order. Either increment might happen first. func might get the arguments `2, 3′, or it might get `3, 2′, or even `2, 2′.
+
+Source: http://gcc.gnu.org/onlinedocs/gcc/Non_002dbugs.html
+d)In C language, sizeof( ) is an operator. Though it looks like a function, it is an unary operator.
+e)In ISO C, you can define main either to take no arguments, or to take two arguments that represent the command line arguments to the program, like this:
+
+int main (int argc, char *argv[])
+Other platform-dependent formats are also allowed by the C and C++ standards; for example, Unix (though not POSIX.1) and Microsoft Visual C++ have a third argument giving the program’s environment, otherwise accessible through getenv in stdlib.h:
+
+char * pPath;
+pPath = getenv ("PATH");
+if (pPath!=NULL)
+printf ("The current path is: %s",pPath);
+
+f)int arr[2]={6,0};
+ 
+arr => first place , arr+1 = second place(4 adds up);
+&arr= starting of whole array ie first plac so arr==&arr,
+now &arr+1 -> &a + 8 postions forward( as arr has size=2 so 4*2)
+
+char *str= "somit";strlen =5 ,sizeof(str)= 4(pointer size)
+char str[]="somit; srtlen=5 , sizeof(str)=6 ( 5 places + 1 '\0')
+
+Pointers for functions: -> int (*foo)(int);  here foo is function
+
+void (*p_function)(int) = NULL;
+p_function = &function;
+p_function(blaaaaaaaa);
+
+------------------------------------------------------------------------------------------------------
+
+
+
